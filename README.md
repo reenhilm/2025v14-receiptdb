@@ -57,6 +57,8 @@ Technologies / Tech stack - Front-end
 * shadcn/ui
 * JSON
 * Git
+* CSS4 and Tailwind v4.0
+* Clerk
 
 Timeframe (including: standups, checkups with teachers and helping other students)
 * 2 weeks 
