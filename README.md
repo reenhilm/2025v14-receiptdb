@@ -3,6 +3,7 @@
 A receipt database to search existing receipts (JSON objects) within your group's JSON file. Your group is determined by your user role (stored in Clerk as metadata).  
   
 ## Why?  
+Because it was the assignment/exercise we got from our teachers [instructions](https://github.com/reenhilm/2025v14-receiptdb/blob/main/README_ASSIGNENT_EXERCISE.md)  
   
 Family members share one group.  
 Demo users have their own group with sample receipts.  
@@ -18,16 +19,17 @@ Search by:
 * Item price  
 * Item title  
   
-# Phase 1 (Now):  
+## Phase 1 (Now):  
 Single frontend with a mock backend (reads from a JSON file).  
 Fast to build, perfect for the course timeline.  
   
-# Phase 2 (Future - Personal Project):  
+## Phase 2 (Future - Personal Project):  
 Real backend for full functionality.  
 Why? Because I’ll actually use this app—making it more motivating to work on in my free time.  
 Excited to expand this into a full-stack showcase—proving to show I'm actually a backend guy.  
   
-Goal: Build something useful, then improve & expand—not just another demo. 🚀  
+## Goal:  
+Build something useful, then improve & expand—not just another demo. 🚀  
 
 Demonstrated in this project:  
 * next.js + app router + tailwind  
