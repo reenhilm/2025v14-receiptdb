@@ -1,4 +1,4 @@
-# 2025v14-receiptdb individual end project - portfolio project  
+# 2025v14-receiptdb individual end project - portfolio    
   
 A receipt database to search existing receipts (JSON objects) within your group's JSON file. Your group is determined by your user role (stored in Clerk as metadata).  
   
