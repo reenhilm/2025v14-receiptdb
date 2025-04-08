@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="grid grid-cols-(--layout-grid-cols)">
+        <div className="grid md:grid-cols-(--layout-grid-cols) grid-cols-(--layout-grid-cols-smallscreen)">
           <header className="col-start-2 -col-end-2 grid grid-cols-subgrid bg-accent min-h-[var(--header-height)] items-center">            
             <Link href="/" className="col-start-2 py-1"><h1 className="text-3xl hover:underline">ReceiptDB</h1></Link>
             <NavHamburger />

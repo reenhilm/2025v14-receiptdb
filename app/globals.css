@@ -63,6 +63,7 @@ a {
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
   --layout-grid-cols: auto 1rem repeat(12, clamp(40px, 8vw, 100px)) 1rem auto;
+  --layout-grid-cols-smallscreen: auto 1rem repeat(12, 1fr) 1rem auto;
   --header-height: 75px;
 }
 
