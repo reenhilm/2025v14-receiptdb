@@ -62,8 +62,9 @@ Technologies / Tech stack - Front-end
 * CSS4 and Tailwind v4.0
 * Clerk
 
-Timeframe (including: standups, checkups with teachers and helping other students)
-* 2 weeks 
+Timeframe 
+* 2 weeks  
+  including: standups, checkups with teachers and helping other students, and "this looks interesting..."-rabbit holes to test and learn, and job interviews/tests/internship-hunting
 
 Project management and planning
 * GitHub Projects
