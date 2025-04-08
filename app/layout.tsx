@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <div className="grid grid-cols-(--layout-grid-cols)">
+          <header className="col-start-2 -col-end-2 grid grid-cols-subgrid bg-accent min-h-[var(--header-height)] items-center">
+            <Link href="/" className="col-start-2 py-1"><h1 className="text-3xl hover:underline">ReceiptDB</h1></Link>
+            <nav className="-col-end-2 flex justify-end items-center h-5 min-h-10">
+              <Link href="/find" className="mx-1 py-1 px-3 font-semibold uppercase hover:underline visually-hidden">FIND</Link>
+              <Link href="/add" className="mx-1 py-1 px-3 font-semibold uppercase hover:underline visually-hidden">ADD</Link>
+              <div className="mx-1 py-1 px-3 whitespace-nowrap *:uppercase *:font-semibold *:cursor-pointer *:hover:underline">
+                <a href="#">SIGN IN</a>
+              </div>
+              <div className="mx-1 py-1 px-3 whitespace-nowrap *:uppercase *:font-semibold *:cursor-pointer *:hover:underline">
+                <a href="#">SIGN UP</a>
+              </div>
+              <div className="ms-1 py-1 ps-3 flex">
+                [AVATAR]
+              </div>
+            </nav>
+          </header>
+          <div className="col-start-2 -col-end-2 min-h-[calc(100vh-var(--header-height))] grid grid-cols-subgrid bg-accent">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
