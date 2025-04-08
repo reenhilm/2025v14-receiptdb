@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import NavHamburger from "./nav-hamburger";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <div className="grid md:grid-cols-(--layout-grid-cols) grid-cols-(--layout-grid-cols-smallscreen)">
+          <header className="col-start-2 -col-end-2 grid grid-cols-subgrid bg-accent min-h-[var(--header-height)] items-center">            
+            <Link href="/" className="col-start-2 py-1"><h1 className="text-3xl hover:underline">ReceiptDB</h1></Link>
+            <NavHamburger />
+          </header>
+          <div className="col-start-2 -col-end-2 min-h-[calc(100vh-var(--header-height))] grid grid-cols-subgrid bg-accent">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
