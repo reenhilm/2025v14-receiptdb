@@ -8,7 +8,7 @@ export default function NavHamburger() {
         <>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon" className="rounded-full sm:hidden">
+                    <Button variant="outline" size="icon" className="sm:hidden ms-4">
                         <MenuIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
                         <span className="sr-only">Toggle navigation menu</span>
                     </Button>
