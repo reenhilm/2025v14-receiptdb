@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavHamburger from "./nav-hamburger";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
         <div className="grid md:grid-cols-(--layout-grid-cols) grid-cols-(--layout-grid-cols-smallscreen)">
           <header className="col-start-2 -col-end-2 grid grid-cols-subgrid bg-accent min-h-[var(--header-height)] items-center">            
             <Link href="/" className="col-start-2 py-1"><h1 className="text-3xl hover:underline">ReceiptDB</h1></Link>
@@ -35,7 +42,8 @@ export default function RootLayout({
           <div className="col-start-2 -col-end-2 min-h-[calc(100vh-var(--header-height))] grid grid-cols-subgrid bg-accent">
             {children}
           </div>
-        </div>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
