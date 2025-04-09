@@ -6,12 +6,12 @@ import NavLinks from "./nav-links"
 export default function NavHamburger() {
     return (
         <>
-            <nav className="flex md:flex hidden -col-end-2 justify-end items-center h-5 min-h-10">
+            <nav className="flex md:flex hidden justify-end items-center h-5 min-h-10">
                 <NavLinks />
             </nav>
             
             <Sheet>
-                <SheetTrigger asChild className="-col-end-2">
+                <SheetTrigger asChild>
                     <Button variant="ghost" size="icon" className="rounded-full md:hidden">
                         <MenuIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
                         <span className="sr-only">Toggle navigation menu</span>
