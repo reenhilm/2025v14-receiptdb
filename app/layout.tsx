@@ -41,7 +41,7 @@ export default function RootLayout({
             <div className="grid md:grid-cols-(--layout-grid-cols) grid-cols-(--layout-grid-cols-smallscreen)">
               <header className="col-start-2 -col-end-2 grid grid-cols-subgrid bg-accent min-h-[var(--header-height)] items-center">
                 <Link href="/" className="col-start-2 py-1"><h1 className="text-3xl hover:underline">ReceiptDB</h1></Link>
-                <nav className="col-start-5 -col-end-5 justify-self-center flex sm:flex hidden justify-end items-center h-5 min-h-10">
+                <nav className="col-start-5 -col-end-5 justify-self-center sm:flex hidden justify-end items-center h-5 min-h-10">
                   <NavLinks />
                 </nav>
                 <div className="-col-end-2 flex justify-end items-center">
