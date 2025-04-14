@@ -1,7 +1,7 @@
 "use server";
 import { fetchFailedMessage, nextworkMessage } from "./constants";
 import ApiError from "./classes/api-error";
-import { Receipt, Receipts } from "./interfaces/receipt";
+import { Receipt } from "./interfaces/receipt";
 
 export const fetchReceiptById = async (receiptId: string, groupId:number): Promise<Receipt | ApiError> => {
     try {
@@ -15,8 +15,8 @@ export const fetchReceiptById = async (receiptId: string, groupId:number): Promi
             throw ApiError.fromError(res.status, fetchFailedMessage);
         }
 
-        const data: Receipts = await res.json();
-        const foundReceipt: Receipt | undefined = data.receipts.find(r => r.id === receiptId);
+        const data: Receipt[] = await res.json();
+        const foundReceipt: Receipt | undefined = data.find(r => r.id === receiptId);
         if(foundReceipt === undefined)
             return ApiError.fromError(404);
         
