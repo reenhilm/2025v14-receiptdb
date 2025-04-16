@@ -8,7 +8,7 @@ function onRetry() {
 
 export default function ErrorDialog({ message }: { message: string | null }) {
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-black/70 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
             <div className="rounded-2xl shadow-lg p-6 w-96">
                 <h2 className="text-xl font-semibold">An Error Occurred</h2>
 
