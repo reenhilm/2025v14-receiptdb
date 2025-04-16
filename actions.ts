@@ -27,3 +27,32 @@ export const fetchReceiptById = async (receiptId: string, groupId:number): Promi
         return ApiError.fromError(500, nextworkMessage);
     }
 };
+
+export const fetchReceiptsByText = async (text: string, groupId: number): Promise<Receipt[] | ApiError> => {
+    try {
+        const res = await fetch(`https://reenhilm.github.io/Data/receiptdb_group${groupId}.json`);
+
+        if (res.status == 404)
+            return ApiError.fromError(404);
+
+        if (!res.ok) {
+            //logging could be done here
+            throw ApiError.fromError(res.status, fetchFailedMessage);
+        }
+
+        const data: Receipt[] = await res.json();
+        const foundReceipts: Receipt[] | undefined = data.filter(r =>
+            r.description.includes(text) ||
+            r.title.includes(text) ||
+            r.retailer_name.includes(text)
+        );
+        if (foundReceipts === undefined)
+            return ApiError.fromError(404);
+
+        return foundReceipts;
+
+    } catch {
+        //catching all errors, we don't want to show all internal error-messages to client so providing general error to client
+        return ApiError.fromError(500, nextworkMessage);
+    }
+};
