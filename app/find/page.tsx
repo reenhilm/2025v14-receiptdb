@@ -1,7 +1,64 @@
-export default function Find() {    
+'use client';
+import { useState, useEffect } from 'react';
+import {
+    Command,
+    CommandInput,
+    CommandList,
+    CommandItem,
+    CommandEmpty,
+} from '@/components/ui/command';
+import { Receipt } from '@/interfaces/receipt';
+import ApiError from '@/classes/api-error';
+import { isApiError } from '@/utils/type-guards';
+import { fetchReceiptsByText } from '@/actions';
+
+export default function FindPage() {
+    const [inputValue, setInputValue] = useState('');
+    const [receipts, setReceipts] = useState<Receipt[] | ApiError>([]);
+    const [hasSearched, setHasSearched] = useState(false);
+
+    useEffect(() => {
+        const delayDebounce = setTimeout(() => {
+            if (inputValue.length > 3) {
+                fetchReceiptsByText(inputValue, 1).then((result) => {
+                    setReceipts(result);
+                    setHasSearched(true);
+                });
+            } else {
+                setReceipts([]);
+                setHasSearched(false);
+            }
+        }, 300);
+
+        return () => clearTimeout(delayDebounce);
+    }, [inputValue]);
+
+    const showResults = !isApiError(receipts) && receipts.length > 0;
+    console.log("showresults:" + showResults);
+
     return (
-        <main className="col-start-2 -col-end-2">
-            <p>Find</p>
+        <main className="col-start-2 -col-end-2 flex flex-col items-center  gap-15">
+            <div className="max-w-lg w-full mt-10">
+                <Command shouldFilter={false}>
+                    <CommandInput
+                        placeholder="Search receipts..."
+                        value={inputValue}
+                        onValueChange={setInputValue}
+                    />
+                    <CommandList>
+                        {showResults ? (
+                            receipts.map((r) => (
+                                <CommandItem key={r.id} className="flex flex-col items-start">
+                                    <span className="font-medium">{r.title}</span>
+                                    <span className="text-sm text-muted-foreground">{r.description}</span>
+                                </CommandItem>
+                            ))
+                        ) : (
+                            hasSearched && <CommandEmpty>No results found.</CommandEmpty>
+                        )}
+                    </CommandList>
+                </Command>
+            </div>
         </main>
-    )
+    );
 }
