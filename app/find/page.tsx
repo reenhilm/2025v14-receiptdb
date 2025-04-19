@@ -19,7 +19,7 @@ export default function FindPage() {
 
     useEffect(() => {
         const delayDebounce = setTimeout(() => {
-            if (inputValue.length > 3) {
+            if (inputValue.length >= 3) {
                 fetchReceiptsByText(inputValue, 1).then((result) => {
                     setReceipts(result);
                     setHasSearched(true);
@@ -54,7 +54,9 @@ export default function FindPage() {
                                 </CommandItem>
                             ))
                         ) : (
-                            hasSearched && <CommandEmpty>No results found.</CommandEmpty>
+                            hasSearched ? <CommandEmpty>No results found.</CommandEmpty>
+                            :
+                            <CommandEmpty>At least 3 characters are required for your search term.</CommandEmpty>
                         )}
                     </CommandList>
                 </Command>
