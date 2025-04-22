@@ -11,6 +11,7 @@ import { Receipt } from '@/interfaces/receipt';
 import ApiError from '@/classes/api-error';
 import { isApiError } from '@/utils/type-guards';
 import { fetchReceiptsByText } from '@/actions';
+import Link from 'next/link';
 
 export default function FindPage() {
     const [inputValue, setInputValue] = useState('');
@@ -20,7 +21,7 @@ export default function FindPage() {
     useEffect(() => {
         const delayDebounce = setTimeout(() => {
             if (inputValue.length >= 3) {
-                fetchReceiptsByText(inputValue, 1).then((result) => {
+                fetchReceiptsByText(inputValue, 2).then((result) => {
                     setReceipts(result);
                     setHasSearched(true);
                 });
@@ -49,8 +50,11 @@ export default function FindPage() {
                         {showResults ? (
                             receipts.map((r) => (
                                 <CommandItem key={r.id} className="flex flex-col items-start">
-                                    <span className="font-medium">{r.title}</span>
-                                    <span className="text-sm text-muted-foreground">{r.description}</span>
+                                    <Link
+                                     href={`./receipts/${r.id}`}>
+                                    <span className="font-medium block">{r.title}</span>
+                                    <span className="text-sm text-muted-foreground block">{r.description}</span>
+                                    </Link>
                                 </CommandItem>
                             ))
                         ) : (
