@@ -41,14 +41,13 @@ export const fetchReceiptsByText = async (text: string, groupId: number): Promis
         }
 
         const data: Receipt[] = await res.json();
-        const foundReceipts: Receipt[] | undefined = data.filter(r =>
-            r.description.includes(text) ||
-            r.title.includes(text) ||
-            r.retailer_name.includes(text)
-        );
-        if (foundReceipts === undefined)
-            return ApiError.fromError(404);
+        const foundReceipts: Receipt[] = data.filter(r => {
+            const textUpper = text.toUpperCase();
 
+            return r.description.toUpperCase().includes(textUpper) ||
+                r.title.toUpperCase().includes(textUpper) ||
+                r.retailer_name.toUpperCase().includes(textUpper);
+        });
         return foundReceipts;
 
     } catch {
